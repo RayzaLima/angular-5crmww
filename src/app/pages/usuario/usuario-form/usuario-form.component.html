@@ -1,0 +1,60 @@
+<app-bread-crumb
+  [items]="[{text: 'Usuários', link: '/usuario'}, {text: pageTitle}]"
+></app-bread-crumb>
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Voltar"
+  button-link="/usuario"
+  button-class="btn-light"
+></app-page-header>
+
+
+<form [formGroup]="resourceForm" (submit)="submitForm()">
+
+  <div class="card">
+    <div class="card-header">
+      Informações sobre o Usuário
+    </div>
+
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="email">E-mail</label>
+          <input type="text" class="form-control" id="email" formControlName="email">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="senha">Senha</label>
+          <input type="password" class="form-control" id="senha" formControlName="senha">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="cpf">CPF</label>
+          <input type="text" class="form-control" id="cpf" formControlName="cpf">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" id="telefone" formControlName="telefone">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
+
+  <button [disabled]="submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>
+
+</form>
